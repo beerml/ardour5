@@ -12,8 +12,7 @@ COMMENT=	Ardour - the digital audio workstation.
 LICENSE=	ISCL
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=    libserd-0.so:audio/serd libsord-0.so:audio/sord libsratom-0.so:audio/sratom liblilv-0.so:audio/lilv
-#liblo rubberband audio liblrdf 
+LIB_DEPENDS=    libserd-0.so:audio/serd libsord-0.so:audio/sord libsratom-0.so:audio/sratom liblilv-0.so:audio/lilv libsuil-0.so:audio/suil libaubio.so:audio/aubio librubberband.so:audio/rubberband liblo.so:audio/liblo liblrdf.so:textproc/liblrdf libjack.so:audio/jack
 
 USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime
 
