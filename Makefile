@@ -7,7 +7,7 @@ CATEGORIES=	audio
 MASTER_SITES=	https://community.ardour.org/srctar/
 
 MAINTAINER=	beerml@sigma6audio.de
-COMMENT=	Ardour - the digital audio workstation.
+COMMENT=	Ardour - the digital audio workstation
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -39,7 +39,8 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 
 USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline
 
-CONFIGURE_TARGET=  configure --optimize --ptformat --also-include=/usr/local/include --also-libdir=/usr/local/lib
+CONFIGURE_TARGET=  	configure --optimize --ptformat \
+			--also-include=/usr/local/include --also-libdir=/usr/local/lib
 
 NLS_USES=       gettext
 
