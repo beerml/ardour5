@@ -12,7 +12,7 @@ COMMENT=	Ardour - the digital audio workstation
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	lv2>0:audio/lv2
+BUILD_DEPENDS=	lv2>=1.12.0:audio/lv2 itstool>0:textproc/itstool
 
 LIB_DEPENDS=    libserd-0.so:audio/serd \
 		libsord-0.so:audio/sord \
@@ -39,7 +39,7 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 
 USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline
 
-CONFIGURE_TARGET=  	configure --optimize --ptformat \
+CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop \
 			--also-include=/usr/local/include --also-libdir=/usr/local/lib
 
 NLS_USES=       gettext
