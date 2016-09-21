@@ -374,3 +374,9 @@ share/ardour5/themes/clear-gray-ardour.colors
 share/ardour5/themes/cubasish-ardour.colors
 share/ardour5/themes/dark-ardour.colors
 share/ardour5/themes/unastudia-ardour.colors
+share/icons/hicolor/16x16/apps/application-x-ardour5_16px.png
+share/icons/hicolor/22x22/apps/application-x-ardour5_22px.png
+share/icons/hicolor/32x32/apps/application-x-ardour5_32px.png
+share/icons/hicolor/48x48/apps/application-x-ardour5_48px.png
+share/appdata/ardour5.appdata.xml
+share/applications/ardour5.desktop

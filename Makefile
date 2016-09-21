@@ -39,7 +39,7 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 
 USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline
 
-CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop \
+CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop --no-phone-home \
 			--also-include=/usr/local/include --also-libdir=/usr/local/lib
 
 NLS_USES=       gettext
@@ -54,5 +54,25 @@ MAKE_ARGS+=	--verbose
 
 post-patch:
 	@${REINPLACE_CMD} -e 's/'\''_POSIX_SOURCE'\''/'\''_POSIX_SOURCE'\'','\''_POSIX_C_SOURCE=200809'\'','\''_XOPEN_SOURCE=700'\''/g' ${WRKSRC}/libs/fst/wscript
+
+post-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/appdata
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/applications
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps
+	@${MV} ${WRKSRC}/build/gtk_ardour/ardour5.appdata.xml \
+		${STAGEDIR}${PREFIX}/share/appdata/ardour5.appdata.xml
+	@${MV} ${WRKSRC}/build/gtk_ardour/ardour5.desktop \
+		${STAGEDIR}${PREFIX}/share/applications/ardour5.desktop
+	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_16px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/application-x-ardour5_16px.png
+	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_22px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/application-x-ardour5_22px.png
+	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_32px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/application-x-ardour5_32px.png
+	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_48px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/application-x-ardour5_48px.png
 
 .include <bsd.port.mk>
