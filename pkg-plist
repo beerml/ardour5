@@ -29,6 +29,7 @@ lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.so
 lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.ttl
 lib/ardour5/ardour-5.3.0
 lib/ardour5/ardour-exec-wrapper
+lib/ardour5/ardour-vst-scanner
 lib/ardour5/backends/libjack_audiobackend.so
 lib/ardour5/engines/libclearlooks.so
 lib/ardour5/hardour-5.3.0
@@ -74,6 +75,8 @@ lib/ardour5/surfaces/libardour_osc.so
 lib/ardour5/vamp/libardourvampplugins.so
 lib/ardour5/vamp/libardourvampplugins.so.0
 lib/ardour5/vamp/libardourvampplugins.so.0.0.0
+share/appdata/ardour5.appdata.xml
+share/applications/ardour5.desktop
 share/ardour5/ArdourMono.ttf
 share/ardour5/export/CD (Red Book).format
 share/ardour5/export/CD + DVD-A.preset
@@ -378,5 +381,3 @@ share/icons/hicolor/16x16/apps/application-x-ardour5_16px.png
 share/icons/hicolor/22x22/apps/application-x-ardour5_22px.png
 share/icons/hicolor/32x32/apps/application-x-ardour5_32px.png
 share/icons/hicolor/48x48/apps/application-x-ardour5_48px.png
-share/appdata/ardour5.appdata.xml
-share/applications/ardour5.desktop

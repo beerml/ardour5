@@ -62,17 +62,17 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps
-	@${MV} ${WRKSRC}/build/gtk_ardour/ardour5.appdata.xml \
+	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.appdata.xml \
 		${STAGEDIR}${PREFIX}/share/appdata/ardour5.appdata.xml
-	@${MV} ${WRKSRC}/build/gtk_ardour/ardour5.desktop \
+	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.desktop \
 		${STAGEDIR}${PREFIX}/share/applications/ardour5.desktop
-	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_16px.png \
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_16px.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/application-x-ardour5_16px.png
-	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_22px.png \
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_22px.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/application-x-ardour5_22px.png
-	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_32px.png \
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_32px.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/application-x-ardour5_32px.png
-	@${MV} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_48px.png \
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_48px.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/application-x-ardour5_48px.png
 
 .include <bsd.port.mk>
