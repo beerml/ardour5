@@ -37,7 +37,7 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 		libFLAC.so:audio/flac \
 		libreadline.so:devel/readline
 
-USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline
+USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline desktop-file-utils
 
 CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop --no-phone-home \
 			--also-include=/usr/local/include --also-libdir=/usr/local/lib
@@ -62,17 +62,23 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps
 	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.appdata.xml \
 		${STAGEDIR}${PREFIX}/share/appdata/ardour5.appdata.xml
 	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.desktop \
 		${STAGEDIR}${PREFIX}/share/applications/ardour5.desktop
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_16px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/application-x-ardour5_16px.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_22px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/application-x-ardour5_22px.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_32px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/application-x-ardour5_32px.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/icons/application-x-ardour_48px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/application-x-ardour5_48px.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_16px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/ardour5.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_22px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/ardour5.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_32px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/ardour5.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_48px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/ardour5.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_256px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps/ardour5.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_512px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps/ardour5.png
 
 .include <bsd.port.mk>
