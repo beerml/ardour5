@@ -1,7 +1,7 @@
 # Created by: Michael Beer <beerml@sigma6audio.de>
 # $FreeBSD$
 
-PORTNAME=	ardour
+PORTNAME=	Ardour
 PORTVERSION=	5.3.0
 CATEGORIES=	audio
 MASTER_SITES=	https://community.ardour.org/srctar/
@@ -12,7 +12,7 @@ COMMENT=	Ardour - the digital audio workstation
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	lv2>=1.12.0:audio/lv2 itstool>0:textproc/itstool
+BUILD_DEPENDS=	lv2>=1.12.0:audio/lv2 itstool>2.0.0:textproc/itstool
 
 LIB_DEPENDS=    libserd-0.so:audio/serd \
 		libsord-0.so:audio/sord \
