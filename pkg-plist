@@ -1,4 +1,6 @@
 bin/ardour5
+bin/ardour5-copy-mixer
+bin/ardour5-export
 bin/ardour5-lua
 etc/ardour5/ardour.keys
 etc/ardour5/ardour.menus
@@ -30,6 +32,7 @@ lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.ttl
 lib/ardour5/ardour-5.3.0
 lib/ardour5/ardour-exec-wrapper
 lib/ardour5/ardour-vst-scanner
+lib/ardour5/backends/libdummy_audiobackend.so
 lib/ardour5/backends/libjack_audiobackend.so
 lib/ardour5/engines/libclearlooks.so
 lib/ardour5/hardour-5.3.0
@@ -72,6 +75,9 @@ lib/ardour5/surfaces/libardour_faderport.so
 lib/ardour5/surfaces/libardour_generic_midi.so
 lib/ardour5/surfaces/libardour_mcp.so
 lib/ardour5/surfaces/libardour_osc.so
+lib/ardour5/utils/ardour-util.sh
+lib/ardour5/utils/ardour5-copy-mixer
+lib/ardour5/utils/ardour5-export
 lib/ardour5/vamp/libardourvampplugins.so
 lib/ardour5/vamp/libardourvampplugins.so.0
 lib/ardour5/vamp/libardourvampplugins.so.0.0.0
@@ -379,7 +385,7 @@ share/ardour5/themes/dark-ardour.colors
 share/ardour5/themes/unastudia-ardour.colors
 share/icons/hicolor/16x16/apps/ardour5.png
 share/icons/hicolor/22x22/apps/ardour5.png
+share/icons/hicolor/256x256/apps/ardour5.png
 share/icons/hicolor/32x32/apps/ardour5.png
 share/icons/hicolor/48x48/apps/ardour5.png
-share/icons/hicolor/256x256/apps/ardour5.png
 share/icons/hicolor/512x512/apps/ardour5.png

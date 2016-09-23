@@ -40,6 +40,7 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline desktop-file-utils
 
 CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop --no-phone-home \
+			--with-backends=jack,dummy --internal-shared-libs \
 			--also-include=/usr/local/include --also-libdir=/usr/local/lib
 
 NLS_USES=       gettext
@@ -80,5 +81,42 @@ post-install:
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps/ardour5.png
 	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_512px.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps/ardour5.png
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/engines/libclearlooks.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/sanityCheck
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libqmdsp.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/vamp/libardourvampplugins.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libpbd.so.4.1.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libevoral.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libtimecode.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libaudiographer.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/a-comp.lv2/a-comp.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/a-delay.lv2/a-delay.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/a-eq.lv2/a-eq.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/a-reverb.lv2/a-reverb.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/LV2/a-fluidsynth.lv2/a-fluidsynth.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-copy-mixer
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-export
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-exec-wrapper
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-vst-scanner
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libardourcp.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libardour.so.3.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libgtkmm2ext.so.0.8.3
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libcanvas.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/backends/libdummy_audiobackend.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/backends/libjack_audiobackend.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libmidipp.so.4.1.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_generic_midi.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_mcp.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_faderport.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_osc.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpan1in2out.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpan2in2out.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpanvbap.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpanbalance.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/luasession
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-5.3.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libptformat.so.0.0.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/hardour-5.3.0
 
 .include <bsd.port.mk>
