@@ -1,10 +1,11 @@
 # Created by: Michael Beer <beerml@sigma6audio.de>
 # $FreeBSD$
 
-PORTNAME=	Ardour
+PORTNAME=	ardour5
 PORTVERSION=	5.3.0
 CATEGORIES=	audio
 MASTER_SITES=	https://community.ardour.org/srctar/
+DISTNAME=	Ardour-${PORTVERSION}
 
 MAINTAINER=	beerml@sigma6audio.de
 COMMENT=	Ardour - the digital audio workstation
