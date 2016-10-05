@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ardour5
-PORTVERSION=	5.3.0
+PORTVERSION=	5.4.0
 CATEGORIES=	audio
 MASTER_SITES=	https://community.ardour.org/srctar/
 DISTNAME=	Ardour-${PORTVERSION}
@@ -38,7 +38,7 @@ LIB_DEPENDS=    libserd-0.so:audio/serd \
 		libFLAC.so:audio/flac \
 		libreadline.so:devel/readline
 
-USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline desktop-file-utils
+USES=		pkgconfig python:build tar:bzip2 waf gettext-runtime readline desktop-file-utils libarchive
 
 CONFIGURE_TARGET=  	configure --optimize --ptformat --freedesktop --no-phone-home \
 			--with-backends=jack,dummy --internal-shared-libs \
@@ -111,13 +111,15 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_mcp.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_faderport.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_osc.so
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/surfaces/libardour_push2.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpan1in2out.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpan2in2out.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpanvbap.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/panners/libpanbalance.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/luasession
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-5.3.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-5.4.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-fix_bbtppq
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/libptformat.so.0.0.0
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/hardour-5.3.0
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/hardour-5.4.0
 
 .include <bsd.port.mk>
