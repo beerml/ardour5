@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ardour5
-PORTVERSION=	5.4.0
+PORTVERSION=	5.5.0
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/ \
 		http://github.com/beerml/ardour_releases/raw/master/
@@ -15,6 +15,8 @@ COMMENT=	Ardour - the digital audio workstation
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+PLIST_SUB=	ARDOURVERSION=${PORTVERSION}
 
 BUILD_DEPENDS=	lv2>=1.14.0:audio/lv2 itstool>2.0.0:textproc/itstool
 
@@ -55,10 +57,6 @@ INSTALLS_ICONS=	yes
 CONFIGURE_ARGS=	--optimize --ptformat --freedesktop --no-phone-home \
 		--with-backends=jack,dummy --internal-shared-libs \
 		--also-include=/usr/local/include --also-libdir=/usr/local/lib
-
-post-patch:
-# can be removed when Ardour 5.5.0 is released
-	@${REINPLACE_CMD} -e 's/'\''_POSIX_SOURCE'\''/'\''_POSIX_SOURCE'\'','\''_POSIX_C_SOURCE=200809'\'','\''_XOPEN_SOURCE=700'\''/g' ${WRKSRC}/libs/fst/wscript
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/appdata

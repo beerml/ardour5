@@ -30,13 +30,13 @@ lib/ardour5/LV2/a-reverb.lv2/manifest.ttl
 lib/ardour5/LV2/reasonablesynth.lv2/manifest.ttl
 lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.so
 lib/ardour5/LV2/reasonablesynth.lv2/reasonablesynth.ttl
-lib/ardour5/ardour-5.4.0
+lib/ardour5/ardour-%%ARDOURVERSION%%
 lib/ardour5/ardour-exec-wrapper
 lib/ardour5/ardour-vst-scanner
 lib/ardour5/backends/libdummy_audiobackend.so
 lib/ardour5/backends/libjack_audiobackend.so
 lib/ardour5/engines/libclearlooks.so
-lib/ardour5/hardour-5.4.0
+lib/ardour5/hardour-%%ARDOURVERSION%%
 lib/ardour5/libardour.so
 lib/ardour5/libardour.so.3
 lib/ardour5/libardour.so.%%GTK3_VERSION%%
@@ -62,9 +62,7 @@ lib/ardour5/libpbd.so.4.1.0
 lib/ardour5/libptformat.so
 lib/ardour5/libptformat.so.0
 lib/ardour5/libptformat.so.0.0.0
-lib/ardour5/libqmdsp.so
-lib/ardour5/libqmdsp.so.0
-lib/ardour5/libqmdsp.so.0.0.0
+lib/ardour5/libqm-dsp.a
 lib/ardour5/libtimecode.so
 lib/ardour5/luasession
 lib/ardour5/panners/libpan1in2out.so
@@ -72,6 +70,7 @@ lib/ardour5/panners/libpan2in2out.so
 lib/ardour5/panners/libpanbalance.so
 lib/ardour5/panners/libpanvbap.so
 lib/ardour5/sanityCheck
+lib/ardour5/surfaces/libardour_cc121.so
 lib/ardour5/surfaces/libardour_faderport.so
 lib/ardour5/surfaces/libardour_generic_midi.so
 lib/ardour5/surfaces/libardour_mcp.so
@@ -118,6 +117,7 @@ share/applications/ardour5.desktop
 %%DATADIR%%/icons/application-x-ardour_48px.png
 %%DATADIR%%/icons/ardour-app-icon_osx.png
 %%DATADIR%%/icons/ardour-app-icon_osx_mask.png
+%%DATADIR%%/icons/cc121.png
 %%DATADIR%%/icons/chord.png
 %%DATADIR%%/icons/close.png
 %%DATADIR%%/icons/computer_keyboard.png
@@ -252,6 +252,8 @@ share/applications/ardour5.desktop
 %%DATADIR%%/locale/zh/LC_MESSAGES/gtk2_ardour5.mo
 %%DATADIR%%/locale/zh/LC_MESSAGES/gtkmm2ext3.mo
 %%DATADIR%%/mcp/SSL Nucleus Ardour.profile
+%%DATADIR%%/mcp/artist_control.device
+%%DATADIR%%/mcp/artist_mix.device
 %%DATADIR%%/mcp/bcf2000.device
 %%DATADIR%%/mcp/cmc.device
 %%DATADIR%%/mcp/mc+xt+xt.device
@@ -269,6 +271,8 @@ share/applications/ardour5.desktop
 %%DATADIR%%/mcp/xt+mc+xt.device
 %%DATADIR%%/mcp/xt+mc.device
 %%DATADIR%%/mcp/xt+xt+mc.device
+%%DATADIR%%/midi_maps/AKAI_MIDIMix_EQ_Mode.map
+%%DATADIR%%/midi_maps/AKAI_MIDIMix_Normal_Mode.map
 %%DATADIR%%/midi_maps/AKAI_MPK61.map
 %%DATADIR%%/midi_maps/AKAI_MPKmini.map
 %%DATADIR%%/midi_maps/DDX3216.map
@@ -409,9 +413,11 @@ share/applications/ardour5.desktop
 %%DATADIR%%/scripts/s_plugin_automation.lua
 %%DATADIR%%/scripts/s_pluginutils.lua
 %%DATADIR%%/scripts/s_portengine.lua
+%%DATADIR%%/scripts/s_region_gain.lua
 %%DATADIR%%/scripts/s_replaceplugin.lua
 %%DATADIR%%/scripts/s_selection.lua
 %%DATADIR%%/scripts/s_track_props.lua
+%%DATADIR%%/scripts/s_vamp_plugin_index.lua
 %%DATADIR%%/scripts/scope.lua
 %%DATADIR%%/scripts/spectrogram.lua
 %%DATADIR%%/scripts/split_all_markers.lua
