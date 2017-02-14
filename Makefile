@@ -1,27 +1,23 @@
 # Created by: Michael Beer <beerml@sigma6audio.de>
-# $FreeBSD$
+# $FreeBSD: head/audio/ardour5/Makefile 432701 2017-01-29 08:28:18Z linimon $
 
 PORTNAME=	ardour5
-PORTVERSION=	5.5.0
+PORTVERSION=	5.6.0
 CATEGORIES=	audio
-MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/ \
-		http://github.com/beerml/ardour_releases/raw/master/
+MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
 # MASTER_SITES=	https://community.ardour.org/srctar/
 DISTNAME=	Ardour-${PORTVERSION}
 
 MAINTAINER=	beerml@sigma6audio.de
-COMMENT=	Ardour - the digital audio workstation
+COMMENT=	Multichannel digital audio workstation
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-PLIST_SUB=	ARDOURVERSION=${PORTVERSION}
-
 BUILD_DEPENDS=	lv2>=1.14.0:audio/lv2 itstool>2.0.0:textproc/itstool
-
-LIB_DEPENDS=	libserd-0.so:audio/serd \
-		libsord-0.so:audio/sord \
+LIB_DEPENDS=	libserd-0.so:devel/serd \
+		libsord-0.so:devel/sord \
 		libsratom-0.so:audio/sratom \
 		liblilv-0.so:audio/lilv \
 		libsuil-0.so:audio/suil \
@@ -43,20 +39,24 @@ LIB_DEPENDS=	libserd-0.so:audio/serd \
 		libFLAC.so:audio/flac \
 		libreadline.so:devel/readline
 
-USES=		desktop-file-utils gettext-runtime libarchive pkgconfig \
+USES=		desktop-file-utils gettext libarchive pkgconfig \
 		python:build readline tar:bzip2 waf
-
 USE_XORG=	x11
-
 USE_GNOME=	atk cairo cairomm gdkpixbuf2 glib20 glibmm gtk20 gtkmm24 pango
-
 USE_LDCONFIG=	yes
-
 INSTALLS_ICONS=	yes
 
+BROKEN_aarch64=		Fails to configure: Could not find the program gas,as,gcc
+
+PLIST_SUB=	ARDOURVERSION=${PORTVERSION}
+
 CONFIGURE_ARGS=	--optimize --ptformat --freedesktop --no-phone-home \
-		--with-backends=jack,dummy --internal-shared-libs \
-		--also-include=/usr/local/include --also-libdir=/usr/local/lib
+		--with-backends=jack,dummy --internal-shared-libs
+
+post-patch:
+	@${REINPLACE_CMD} -e 's/obj\.use            = '\''libsmf libpbd'\''/obj\.use            = '\''libsmf_internal libpbd'\''/g' ${WRKSRC}/libs/evoral/wscript
+	@${REINPLACE_CMD} -e 's/libsmf\.name         = '\''libsmf'\''/libsmf\.name         = '\''libsmf_internal'\''/g' ${WRKSRC}/libs/evoral/wscript
+	@${REINPLACE_CMD} -e 's/libsmf\.target       = '\''smf'\''/libsmf\.target       = '\''smf_internal'\''/g' ${WRKSRC}/libs/evoral/wscript
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/appdata
@@ -95,4 +95,16 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-fix_bbtppq
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/hardour-${PORTVERSION}
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${ARCH} == "i386"
+WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=i386
+.elif ${ARCH} == "amd64"
+WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=x86_64
+.endif
+
+.if defined(WITH_ARCH_FLAGS)
+CONFIGURE_ARGS+=	${WITH_ARCH_FLAGS}
+.endif
+
+.include <bsd.port.post.mk>
