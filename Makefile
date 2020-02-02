@@ -1,8 +1,9 @@
 # Created by: Michael Beer <beerml@sigma6audio.de>
-# $FreeBSD: head/audio/ardour5/Makefile 432701 2017-01-29 08:28:18Z linimon $
+# $FreeBSD: head/audio/ardour5/Makefile 522745 2020-01-12 02:59:41Z pkubaj $
 
 PORTNAME=	ardour5
-PORTVERSION=	5.6.0
+PORTVERSION=	5.12.0
+PORTREVISION=	13
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
@@ -36,17 +37,18 @@ LIB_DEPENDS=	libserd-0.so:devel/serd \
 		libfftw3f.so:math/fftw3-float \
 		libcurl.so:ftp/curl \
 		libogg.so:audio/libogg \
-		libFLAC.so:audio/flac \
-		libreadline.so:devel/readline
+		libFLAC.so:audio/flac
 
-USES=		desktop-file-utils gettext libarchive pkgconfig \
-		python:build readline tar:bzip2 waf
+USES=		compiler:c++11-lang desktop-file-utils gettext gnome \
+		libarchive pkgconfig python:2.7,build readline:port tar:bzip2 \
+		waf xorg
+USE_CXXSTD=	c++11
 USE_XORG=	x11
 USE_GNOME=	atk cairo cairomm gdkpixbuf2 glib20 glibmm gtk20 gtkmm24 pango
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
-BROKEN_aarch64=		Fails to configure: Could not find the program gas,as,gcc
+BROKEN_aarch64=		fails to configure: Could not find the program gas,as,gcc
 
 PLIST_SUB=	ARDOURVERSION=${PORTVERSION}
 
@@ -101,6 +103,8 @@ post-install:
 WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=i386
 .elif ${ARCH} == "amd64"
 WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=x86_64
+.elif ${ARCH} == "powerpc64"
+LLD_UNSAFE=	yes
 .endif
 
 .if defined(WITH_ARCH_FLAGS)
