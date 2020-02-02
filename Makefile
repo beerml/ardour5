@@ -1,11 +1,12 @@
 # Created by: Michael Beer <beerml@sigma6audio.de>
 # $FreeBSD: head/audio/ardour5/Makefile 522745 2020-01-12 02:59:41Z pkubaj $
 
-PORTNAME=	ardour5
-PORTVERSION=	5.12.0
-PORTREVISION=	13
+PORTNAME=	ardour6
+PORTVERSION=	6.0.0.a.70f7280
+#PORTREVISION=	13
 CATEGORIES=	audio
-MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
+MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/alpha/
+#MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
 # MASTER_SITES=	https://community.ardour.org/srctar/
 DISTNAME=	Ardour-${PORTVERSION}
