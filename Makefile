@@ -2,7 +2,7 @@
 # $FreeBSD: head/audio/ardour5/Makefile 522745 2020-01-12 02:59:41Z pkubaj $
 
 PORTNAME=	ardour6
-PORTVERSION=	6.0.0.a.70f7280
+PORTVERSION=	6.0.0
 #PORTREVISION=	13
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/alpha/
@@ -70,33 +70,34 @@ post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps
-	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.appdata.xml \
-		${STAGEDIR}${PREFIX}/share/appdata/ardour5.appdata.xml
-	@${CP} ${WRKSRC}/build/gtk2_ardour/ardour5.desktop \
-		${STAGEDIR}${PREFIX}/share/applications/ardour5.desktop
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_16px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/ardour5.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_22px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/ardour5.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_32px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/ardour5.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_48px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/ardour5.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_256px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps/ardour5.png
-	@${CP} ${STAGEDIR}${PREFIX}/share/ardour5/resources/Ardour-icon_512px.png \
-		${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps/ardour5.png
+	@${CP} ${WRKSRC}/build/gtk2_ardour/${PORTNAME}.appdata.xml \
+		${STAGEDIR}${PREFIX}/share/appdata/${PORTNAME}.appdata.xml
+	@${CP} ${WRKSRC}/build/gtk2_ardour/${PORTNAME}.desktop \
+		${STAGEDIR}${PREFIX}/share/applications/${PORTNAME}.desktop
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_16px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/16x16/apps/${PORTNAME}.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_22px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/22x22/apps/${PORTNAME}.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_32px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/32x32/apps/${PORTNAME}.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_48px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/48x48/apps/${PORTNAME}.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_256px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/256x256/apps/${PORTNAME}.png
+	@${CP} ${STAGEDIR}${PREFIX}/share/${PORTNAME}/resources/Ardour-icon_512px.png \
+		${STAGEDIR}${PREFIX}/share/icons/hicolor/512x512/apps/${PORTNAME}.png
 	@${FIND} ${STAGEDIR}${PREFIX}/lib/${PORTNAME} \
 		-name '*.so*' -exec ${STRIP_CMD} {} +
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/sanityCheck
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-copy-mixer
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-export
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-exec-wrapper
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-vst-scanner
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/luasession
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/ardour-${PORTVERSION}
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/utils/ardour5-fix_bbtppq
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/ardour5/hardour-${PORTVERSION}
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/sanityCheck
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-copy-mixer
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-export
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-fix_bbtppq
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-new_empty_session
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-new_session
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-exec-wrapper
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-vst-scanner
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-6*
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/hardour-6*
 
 .include <bsd.port.pre.mk>
 
