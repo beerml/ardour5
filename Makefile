@@ -3,10 +3,8 @@
 
 PORTNAME=	ardour6
 PORTVERSION=	6.0.0
-#PORTREVISION=	13
 CATEGORIES=	audio
-MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/alpha/
-#MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
+MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
 # MASTER_SITES=	https://community.ardour.org/srctar/
 DISTNAME=	Ardour-${PORTVERSION}
