@@ -15,7 +15,7 @@ COMMENT=	Multichannel digital audio workstation
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	lv2>=1.14.0:audio/lv2 itstool>2.0.0:textproc/itstool
+BUILD_DEPENDS=	lv2>=1.18.0:audio/lv2 itstool>2.0.0:textproc/itstool
 LIB_DEPENDS=	libserd-0.so:devel/serd \
 		libsord-0.so:devel/sord \
 		libsratom-0.so:audio/sratom \
@@ -36,10 +36,11 @@ LIB_DEPENDS=	libserd-0.so:devel/serd \
 		libfftw3f.so:math/fftw3-float \
 		libcurl.so:ftp/curl \
 		libogg.so:audio/libogg \
-		libFLAC.so:audio/flac
+		libFLAC.so:audio/flac \
+		libwebsockets.so:net/libwebsockets
 
 USES=		compiler:c++11-lang desktop-file-utils gettext gnome \
-		libarchive pkgconfig python:2.7,build readline:port tar:bzip2 \
+		libarchive pkgconfig python:3.7,build readline:port tar:bzip2 \
 		waf xorg
 USE_CXXSTD=	c++11
 USE_XORG=	x11
@@ -94,8 +95,9 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/utils/${PORTNAME}-new_session
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-exec-wrapper
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-vst-scanner
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-6*
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/hardour-6*
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/ardour-${PORTVERSION}
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/hardour-${PORTVERSION}
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/luasession
 
 .include <bsd.port.pre.mk>
 
